@@ -32,7 +32,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts"></script>
+
+<script setup lang="ts">
 import {
   defineComponent,
   toRefs,
@@ -46,9 +48,6 @@ import {
   onUnmounted,
   watch,
 } from 'vue';
-</script>
-
-<script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
 export default defineComponent({
   name: 'demo-block',

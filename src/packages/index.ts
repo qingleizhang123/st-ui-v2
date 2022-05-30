@@ -1,9 +1,12 @@
 import { App } from 'vue';
 import Button from './button';
+import ImageButton from './ImageButton';
 import DemoBlock from './DemoBlock';
+import LayoutSwitch from './LayoutSwitch';
+import SeriesList from './SeriesList';
 
 // 所有组件列表
-const components = [Button, DemoBlock];
+const components = [Button, ImageButton, DemoBlock, LayoutSwitch, SeriesList];
 
 // 定义 install 方法， App 作为参数
 const install = (app: App): void => {

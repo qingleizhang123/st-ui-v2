@@ -59,6 +59,8 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'vue/no-export-in-script-setup': 'off',
     'vue/html-indent': ['error', 2],
+    'vue/no-setup-props-destructure': 'off',
+    'vue/require-valid-default-prop': 'off',
 
     // prettier
     'prettier/prettier': 'error',
