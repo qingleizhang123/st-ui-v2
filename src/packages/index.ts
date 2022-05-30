@@ -1,8 +1,9 @@
 import { App } from 'vue';
 import Button from './button';
+import DemoBlock from './DemoBlock';
 
 // 所有组件列表
-const components = [Button];
+const components = [Button, DemoBlock];
 
 // 定义 install 方法， App 作为参数
 const install = (app: App): void => {
@@ -10,7 +11,7 @@ const install = (app: App): void => {
   components.map(component => app.component(component.name, component));
 };
 
-export { Button };
+export { Button, DemoBlock };
 
 export default {
   install,
