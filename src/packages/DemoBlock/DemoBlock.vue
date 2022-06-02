@@ -34,14 +34,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+export default defineComponent({
+  name: 'demo-block',
+});
 </script>
 
 <script setup lang="ts">
 import { toRefs, ref, reactive, computed, ToRefs, defineProps, onMounted, nextTick, onUnmounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-export default defineComponent({
-  name: 'demo-block',
-});
 const demoBlock = ref(null);
 const meta = ref(null);
 const control = ref(null);

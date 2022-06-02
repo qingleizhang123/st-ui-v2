@@ -66,7 +66,7 @@ module.exports = {
     'prettier/prettier': 'error',
 
     // import
-    'import/first': 'error',
+    'import/first': 'off',
     'import/no-duplicates': 'off',
     'import/order': [
       'error',

@@ -21,13 +21,14 @@
   </div>
 </template>
 
-<script lang="ts"></script>
-
-<script lang="ts" setup>
-import { ref, defineProps, defineEmits } from 'vue';
+<script lang="ts">
 export default {
   name: 'series-list',
 };
+</script>
+
+<script lang="ts" setup>
+import { ref, defineProps, defineEmits } from 'vue';
 const props = withDefaults(
   defineProps<{
     seriesList?: Array;

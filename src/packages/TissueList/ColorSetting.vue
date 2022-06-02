@@ -20,15 +20,16 @@
   </div>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts">
+export default {
+  name: 'color-setting',
+};
+</script>
 
 <script lang="ts" setup>
 import { defineComponent, ref, defineEmits } from 'vue';
 import { CloseOutlined } from '@ant-design/icons-vue';
 import { colorPickerConfig } from '../../config/colorpicker.config';
-export default {
-  name: 'color-setting',
-};
 const emits = defineEmits<{
   (e: 'changeColor', color: string);
   (e: 'changeSettingOpen', isOpen: boolean): void;
