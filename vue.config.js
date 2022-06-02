@@ -51,7 +51,6 @@ module.exports = {
             threshold: 10240,
             deleteOriginalAssets: false,
           }),
-          require('unplugin-vue-define-options/webpack')(),
         ],
       };
     } else {
