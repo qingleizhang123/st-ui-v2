@@ -21,18 +21,37 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { CloseOutlined } from '@ant-design/icons-vue';
-import { colorPickerConfig } from '../../config/colorpicker.config';
+import { defineComponent, ref, ref, defineEmits } from 'vue';
 </script>
 
 <script lang="ts" setup>
+import { CloseOutlined } from '@ant-design/icons-vue';
+import { colorPickerConfig } from '../../config/colorpicker.config';
 export default defineComponent({
   name: 'color-setting',
 });
+const emits = defineEmits<{
+  (e: 'changeColor', color: string);
+  (e: 'changeSettingOpen', isOpen: boolean): void;
+}>();
 const settingTitle = '颜色设置';
 const colorIndex = 0;
-const colorPickerList = colorPickerConfig.colorOptions;
+const colorPickerList = ref(colorPickerConfig.colorOptions);
+
+const changeColor = pureColorId => {
+  colorPickerList.value.forEach(colorItem => {
+    if (pureColorId === colorItem.id) {
+      colorItem.isSelected = true;
+      emits('changeColor', colorItem.color);
+    } else {
+      colorItem.isSelected = false;
+    }
+  });
+};
+
+const closeSetting = () => {
+  emits('changeSettingOpen', false);
+};
 </script>
 
 <style lang="less" scoped>

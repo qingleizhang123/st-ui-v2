@@ -38,7 +38,7 @@ module.exports = {
     'no-constant-condition': ['error', { checkLoops: false }],
 
     'no-redeclare': 'off',
-    '@typescript-eslint/no-redeclare': 'error',
+    '@typescript-eslint/no-redeclare': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',

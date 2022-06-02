@@ -4,9 +4,10 @@ import ImageButton from './ImageButton';
 import DemoBlock from './DemoBlock';
 import LayoutSwitch from './LayoutSwitch';
 import SeriesList from './SeriesList';
+import TissueList from './TissueList';
 
 // 所有组件列表
-const components = [Button, ImageButton, DemoBlock, LayoutSwitch, SeriesList];
+const components = [Button, ImageButton, DemoBlock, LayoutSwitch, SeriesList, TissueList];
 
 // 定义 install 方法， App 作为参数
 const install = (app: App): void => {

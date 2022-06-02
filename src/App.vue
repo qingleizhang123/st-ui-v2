@@ -6,6 +6,9 @@
   <st-button type="danger">危险按钮</st-button>
   <st-button type="success">成功按钮</st-button>
 
+  <div class="title">ImageButton组件示例:</div>
+  <image-button :imgPath="'#'" :title="'手动配准'"></image-button>
+
   <div class="title">代码块组件示例:</div>
   <demo-block>
     <template #source>
@@ -21,9 +24,13 @@
 
   <div class="title">序列切换组件示例:</div>
   <series-list :seriesList="series"></series-list>
+
+  <div class="title">组织列表组件示例:</div>
+  <tissue-list :tissueList="tissues"></tissue-list>
 </template>
 
 <script lang="ts" setup>
+import { TissueItem } from './packages/TissueList/interface';
 const changeLayout = (layoutName: string) => {
   console.log(layoutName);
 };
@@ -87,6 +94,45 @@ const series = [
     Modality: 'CT',
     ImageCount: 100,
     Description: '膝关节序列',
+  },
+];
+
+const tissues: TissueItem[] = [
+  {
+    tissueId: 1,
+    name: '组织1',
+    color: 'rgba(255,255,255,1)',
+    visibility: true,
+    isSelected: false,
+    volume: 100,
+    vrAlpha: 70,
+    mprAlpha: 70,
+    deleteEnabled: true,
+    selected: false,
+  },
+  {
+    tissueId: 1,
+    name: '组织1',
+    color: 'rgba(255,255,255,1)',
+    visibility: true,
+    isSelected: false,
+    volume: 100,
+    vrAlpha: 70,
+    mprAlpha: 70,
+    deleteEnabled: true,
+    selected: false,
+  },
+  {
+    tissueId: 1,
+    name: '组织1',
+    color: 'rgba(255,255,255,1)',
+    visibility: true,
+    isSelected: false,
+    volume: 100,
+    vrAlpha: 70,
+    mprAlpha: 70,
+    deleteEnabled: true,
+    selected: false,
   },
 ];
 </script>
