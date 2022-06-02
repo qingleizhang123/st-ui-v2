@@ -35,7 +35,6 @@
 <script lang="ts">
 import {
   defineComponent,
-  defineComponent,
   toRefs,
   ref,
   reactive,

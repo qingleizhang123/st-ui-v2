@@ -7,14 +7,13 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, defineProps, defineEmits } from 'vue';
-</script>
+<script lang="ts"></script>
 
 <script lang="ts" setup>
-export default defineComponent({
+import { defineProps, defineEmits } from 'vue';
+export default {
   name: 'image-button',
-});
+};
 const props = defineProps<{
   imgPath: '';
   title: '';

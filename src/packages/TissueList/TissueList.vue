@@ -41,15 +41,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, defineProps } from 'vue';
-</script>
+<script lang="ts"></script>
 
 <script lang="ts" setup>
+import { ref, defineProps } from 'vue';
 import TissueItem from './TissueItem.vue';
-export default defineComponent({
+export default {
   name: 'tissue-list',
-});
+};
 const props = withDefaults(
   defineProps<{
     tissueList?: Array;

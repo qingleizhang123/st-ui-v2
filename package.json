@@ -1,6 +1,6 @@
 {
   "name": "uih-st-ui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "description": "st前端组件库",
   "main": "./dist/st-ui.umd.min.js",
@@ -11,6 +11,10 @@
   "author": {
     "name": "qinglei.zhang",
     "email": "15927022233@163.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qingleizhang123/st-ui-v2.git"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
