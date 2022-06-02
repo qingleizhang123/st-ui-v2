@@ -33,22 +33,11 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  toRefs,
-  ref,
-  reactive,
-  computed,
-  ToRefs,
-  defineProps,
-  onMounted,
-  nextTick,
-  onUnmounted,
-  watch,
-} from 'vue';
+import { defineComponent } from 'vue';
 </script>
 
 <script setup lang="ts">
+import { toRefs, ref, reactive, computed, ToRefs, defineProps, onMounted, nextTick, onUnmounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 export default defineComponent({
   name: 'demo-block',

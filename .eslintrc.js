@@ -67,7 +67,7 @@ module.exports = {
 
     // import
     'import/first': 'error',
-    'import/no-duplicates': 'error',
+    'import/no-duplicates': 'off',
     'import/order': [
       'error',
       {
