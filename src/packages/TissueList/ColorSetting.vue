@@ -54,7 +54,7 @@ const closeSetting = () => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .text-common(@family, @size, @font-weight) {
   font-family: @family;
   font-size: @size;

@@ -12,10 +12,12 @@
   <div class="title">代码块组件示例:</div>
   <demo-block>
     <template #source>
-      <st-button>默认按钮</st-button>
+      <layout-switch :imgPath="'#'" :title="'2x2'" :layoutName="'2x2hip'" @changeLayout="changeLayout"></layout-switch>
     </template>
     使用type属性来定义 Button 的样式
-    <template #highlight> </template>
+    <template #highlight>
+      <pre><layout-switch :imgPath="'#'" :title="'2x2'" :layoutName="'2x2hip'" @changeLayout="changeLayout"></layout-switch></pre>
+    </template>
   </demo-block>
 
   <div class="title">布局切换组件示例:</div>
@@ -137,7 +139,7 @@ const tissues: TissueItem[] = [
 ];
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .title {
   padding: 8px;
 }

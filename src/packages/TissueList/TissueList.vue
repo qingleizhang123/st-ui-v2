@@ -71,7 +71,7 @@ const cssHeight = props.height;
 
 const tissueOpacity = ref(0);
 </script>
-<style lang="less" scoped>
+<style lang="less">
 @height: 35px;
 
 .tissue-list-wrapper {

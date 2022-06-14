@@ -1,35 +1,11 @@
-# dhs
+# uih-st-ui
 
-## Project setup
+## 安装
 
-```
-npm install
-```
+npm install uih-st-ui -s
 
-### Compiles and hot-reloads for development
+### 使用
 
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Run your unit tests
-
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+import STUI from 'uih-st-ui'
+import 'uih-st-ui/dist/uih-st-ui.css'
+Vue.use(STUI)

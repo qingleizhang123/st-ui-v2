@@ -105,7 +105,7 @@ const deleteTissue = () => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @height: 35px;
 
 .table-tr {

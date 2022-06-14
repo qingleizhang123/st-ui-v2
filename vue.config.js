@@ -28,6 +28,9 @@ module.exports = {
       less: {
         javascriptEnabled: true,
       },
+      sass: {
+        javascriptEnabled: true,
+      },
     },
   },
   configureWebpack: config => {

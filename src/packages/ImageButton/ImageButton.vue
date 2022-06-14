@@ -15,6 +15,7 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
+import '../../styles/index.less';
 import { defineProps, defineEmits } from 'vue';
 const props = defineProps<{
   imgPath: '';
@@ -30,7 +31,7 @@ const change = () => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .st-image-button {
   display: inline-block;
   .st-btn {

@@ -30,7 +30,7 @@ const changeLayout = () => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .st-layout {
   display: inline-block;
   .st-layout-btn {

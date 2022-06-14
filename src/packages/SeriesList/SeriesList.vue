@@ -63,7 +63,7 @@ const onSelectSerie = series => {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .series-list-wrapper {
   background: #1f232b;
   border: 1px solid #323843;

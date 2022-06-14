@@ -131,7 +131,7 @@ onUnmounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .demo-block {
   border: solid 1px #ebebeb;
   border-radius: 3px;
