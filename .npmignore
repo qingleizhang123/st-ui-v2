@@ -1,8 +1,8 @@
-src // 源码不用发
-public // public不用发
-tests // 测试用例不用发，其他的无所谓，dist一定要发
-node_modules
-.husky
+src/
+public/
+tests/
+node_modules/
+.husky/
 
 .cz-config.js
 .editorconfig

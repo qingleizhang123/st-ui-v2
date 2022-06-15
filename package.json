@@ -1,12 +1,10 @@
 {
   "name": "uih-st-ui",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": false,
   "description": "st前端组件库",
-  "main": "./dist/st-ui.umd.min.js",
-  "module": "lib/index.esm.js",
-  "typings": "lib/index.d.ts",
-  "keyword": "st ui",
+  "main": "./dist/uih-st-ui.umd.min.js",
+  "keyword": "uih st ui",
   "license": "MIT",
   "author": {
     "name": "qinglei.zhang",
@@ -22,7 +20,7 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "prepare": "husky install .husky",
-    "lib": "vue-cli-service build --target lib  --name st-ui   ./src/packages/index.ts"
+    "lib": "vue-cli-service build --target lib  --name uih-st-ui  ./src/packages/index.ts"
   },
   "dependencies": {
     "@webcomponents/custom-elements": "^1.4.1",
