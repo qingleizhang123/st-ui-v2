@@ -41,5 +41,6 @@ export const colorPickerConfig = {
     { id: 33, color: 'rgba(168,144,255,1)', isSelected: false },
     { id: 34, color: 'rgba(196,180,255,1)', isSelected: false },
     { id: 35, color: 'rgba(225,217,255,1)', isSelected: false },
+    { id: 36, color: 'rgba(0,0,0,0)', isSelected: false },
   ],
 };

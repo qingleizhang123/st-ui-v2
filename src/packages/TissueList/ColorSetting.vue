@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-box">
+  <div class="setting-box" :class="props.position === 'right' ? 'box-right' : 'box-left'">
     <div class="setting-top">
       <span class="title">{{ settingTitle }}</span>
       <CloseOutlined class="close-icon" @click.stop="closeSetting" />
@@ -10,7 +10,9 @@
           <a-row type="flex">
             <a-col flex="1 1 20%" v-for="color in colorPickerList" :key="color">
               <div class="color-box" :class="{ selected: color.isSelected }" @click.stop="changeColor(color.id)">
-                <div class="color-item" :style="{ background: color.color }"></div>
+                <div class="color-item" :style="{ background: color.color }">
+                  <div class="initial-color" v-if="color.color === 'rgba(0,0,0,0)'"></div>
+                </div>
               </div>
             </a-col>
           </a-row>
@@ -27,9 +29,17 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { defineComponent, ref, defineEmits } from 'vue';
+import { ref, defineProps, defineEmits } from 'vue';
 import { CloseOutlined } from '@ant-design/icons-vue';
 import { colorPickerConfig } from '../../config/colorpicker.config';
+const props = withDefaults(
+  defineProps<{
+    position?: string;
+  }>(),
+  {
+    position: 'right',
+  },
+);
 const emits = defineEmits<{
   (e: 'changeColor', color: string);
   (e: 'changeSettingOpen', isOpen: boolean): void;
@@ -119,6 +129,11 @@ const closeSetting = () => {
             width: 28px;
             margin: 3px;
             border-radius: 2px;
+            .initial-color {
+              width: 100%;
+              height: 100%;
+              background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+            }
           }
         }
 
@@ -130,5 +145,15 @@ const closeSetting = () => {
       }
     }
   }
+}
+
+.box-left {
+  left: -335px;
+  top: -58px;
+}
+
+.box-right {
+  right: -335px;
+  top: -58px;
 }
 </style>
