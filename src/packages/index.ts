@@ -5,9 +5,10 @@ import ImageButton from './ImageButton';
 import LayoutSwitch from './LayoutSwitch';
 import SeriesList from './SeriesList';
 import TissueList from './TissueList';
+import ColorPicker from './ColorPicker';
 
 // 所有组件列表
-const components = [Button, Select, ImageButton, LayoutSwitch, SeriesList, TissueList];
+const components = [Button, Select, ImageButton, LayoutSwitch, SeriesList, TissueList, ColorPicker];
 
 // 定义 install 方法， App 作为参数
 const install = (app: App): void => {
@@ -15,7 +16,7 @@ const install = (app: App): void => {
   components.map(component => app.component(component.name, component));
 };
 
-export { Button, Select, ImageButton, LayoutSwitch, SeriesList, TissueList };
+export { Button, Select, ImageButton, LayoutSwitch, SeriesList, TissueList, ColorPicker };
 
 export default {
   install,

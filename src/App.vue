@@ -44,12 +44,20 @@
       :allowClear="true"
       :options="options"
     ></st-select>
+
+    <div class="title">颜色选择器组件</div>
+    <color-picker
+      :colorOptions="colorOptions"
+      @changeSettingOpen="changeSettingOpen"
+      @changeColor="changeColor"
+    ></color-picker>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { TissueItem } from './packages/TissueList/interface';
+import { colorPickerConfig } from './config/colorpicker.config';
 const changeLayout = (layoutName: string) => {
   console.log(layoutName);
 };
@@ -170,6 +178,16 @@ const options = [
 
 const handleChangeOperationSide = (option: string) => {
   console.log(option);
+};
+
+const colorOptions = ref(colorPickerConfig.colorOptions);
+
+const changeSettingOpen = () => {
+  console.log('关闭');
+};
+
+const changeColor = (color: string) => {
+  console.log(color);
 };
 </script>
 
