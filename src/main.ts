@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import { Slider, Row, Col, Select } from 'ant-design-vue';
+import { Slider, Row, Col, Select, Progress } from 'ant-design-vue';
 import Derectives from '@/derective/index';
 import App from './App.vue';
 import STUI from './packages/index';
@@ -10,6 +10,7 @@ Slider.install(app);
 Row.install(app);
 Col.install(app);
 Select.install(app);
+Progress.install(app);
 app.use(STUI);
 app.use(Derectives);
 app.mount('#app');

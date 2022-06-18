@@ -51,6 +51,13 @@
       @changeSettingOpen="changeSettingOpen"
       @changeColor="changeColor"
     ></color-picker>
+
+    <div class="title">进度条组件</div>
+    <st-progress
+      :visible="progressVisible"
+      :progressContent="progressContent"
+      :progressPercent="progressPercent"
+    ></st-progress>
   </div>
 </template>
 
@@ -189,6 +196,18 @@ const changeSettingOpen = () => {
 const changeColor = (color: string) => {
   console.log(color);
 };
+
+const progressVisible = ref(true);
+const progressContent = '加载中...';
+const progressPercent = ref(50);
+
+setInterval(() => {
+  if (progressPercent.value < 100) {
+    progressPercent.value += 10;
+  } else {
+    progressVisible.value = false;
+  }
+}, 1000);
 </script>
 
 <style lang="less">
