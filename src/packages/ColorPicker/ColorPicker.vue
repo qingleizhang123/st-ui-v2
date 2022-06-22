@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-box" :class="props.position === 'right' ? 'box-right' : 'box-left'">
+  <div class="st-colorpicker-box">
     <div class="setting-top">
       <span class="title">{{ settingTitle }}</span>
       <CloseOutlined class="close-icon" @click.stop="closeSetting" />
@@ -8,7 +8,7 @@
       <div class="setting-color">
         <div class="color-picker">
           <a-row type="flex">
-            <a-col flex="1 1 20%" v-for="color in colorPickerList" :key="color">
+            <a-col flex="1 1 20%" v-for="color in props.colorOptions" :key="color">
               <div class="color-box" :class="{ selected: color.isSelected }" @click.stop="changeColor(color.id)">
                 <div class="color-item" :style="{ background: color.color }">
                   <div class="initial-color" v-if="color.color === 'rgba(0,0,0,0)'"></div>
@@ -23,30 +23,24 @@
 </template>
 
 <script lang="ts">
-export default {
-  name: 'color-setting',
-};
+import { defineComponent } from 'vue';
+export default defineComponent({
+  name: 'color-picker',
+});
 </script>
 
 <script lang="ts" setup>
 import { ref, defineProps, defineEmits } from 'vue';
 import { CloseOutlined } from '@ant-design/icons-vue';
-import { colorPickerConfig } from '../../config/colorpicker.config';
-const props = withDefaults(
-  defineProps<{
-    position?: string;
-  }>(),
-  {
-    position: 'right',
-  },
-);
+const props = defineProps<{
+  colorOptions: [];
+}>();
 const emits = defineEmits<{
   (e: 'changeColor', color: string);
   (e: 'changeSettingOpen', isOpen: boolean): void;
 }>();
 const settingTitle = '颜色设置';
 const colorIndex = 0;
-const colorPickerList = ref(colorPickerConfig.colorOptions);
 
 const changeColor = pureColorId => {
   colorPickerList.value.forEach(colorItem => {
@@ -73,11 +67,8 @@ const closeSetting = () => {
   font-weight: @font-weight;
 }
 
-.setting-box {
-  position: absolute;
-  right: 414px;
-  top: 350px;
-  z-index: 999;
+.st-colorpicker-box {
+  position: relative;
   width: 320px;
   background: rgba(21, 24, 28, 0.9);
   box-shadow: 0px 6px 12px 0px rgb(0 0 0 / 50%);
@@ -105,8 +96,7 @@ const closeSetting = () => {
   }
 
   .setting-container {
-    margin-left: 60px;
-    margin-bottom: 64.98px;
+    padding: 0px 60px 65px 60px;
 
     .setting-color {
       height: auto;
@@ -145,15 +135,5 @@ const closeSetting = () => {
       }
     }
   }
-}
-
-.box-left {
-  left: -335px;
-  top: -58px;
-}
-
-.box-right {
-  right: -335px;
-  top: -58px;
 }
 </style>

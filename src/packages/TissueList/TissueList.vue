@@ -27,7 +27,7 @@
           :tissue="item"
           @changeColor="changeColor"
           @deleteTissue="deleteTissue"
-          :selectCellType="selectCellType"
+          @openColorTable="openColorTable"
         ></tissue-item>
       </template>
     </div>
@@ -38,6 +38,15 @@
       </div>
       <label class="tissue-opacity-span">{{ tissueOpacity + '%' }}</label>
     </div>
+
+    <!-- 颜色调节弹框 -->
+    <template v-if="isOpenColorSetting">
+      <color-setting
+        @changeSettingOpen="changeSettingOpen"
+        @changeColor="changeColor"
+        :position="props.colorSettingPosition"
+      ></color-setting>
+    </template>
   </div>
 </template>
 
@@ -49,32 +58,58 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import { ref, defineProps } from 'vue';
+import { ref, defineProps, defineEmits } from 'vue';
 import TissueItem from './TissueItem.vue';
+import ColorSetting from './ColorSetting.vue';
 const props = withDefaults(
   defineProps<{
     tissueList?: Array;
     width?: string;
     height?: string;
+    colorSettingPosition?: string;
   }>(),
   {
     tissueList: [],
     width: '354px',
     height: '',
+    colorSettingPosition: 'right',
   },
 );
+
+const emits = defineEmits<{
+  (e: 'changeColor', color: string): void;
+}>();
+
 const tissueList = ref(props.tissueList);
 const allVisibleState = ref(1);
+const isOpenColorSetting = ref(false);
+let openColorId = -1;
 
 const cssWidth = props.width;
 const cssHeight = props.height;
 
 const tissueOpacity = ref(0);
+
+// 打开颜色表的tissue的id
+const openColorTable = id => {
+  openColorId = id;
+  isOpenColorSetting.value = true;
+};
+
+const changeSettingOpen = (param: boolean) => {
+  isOpenColorSetting.value = param;
+};
+
+const changeColor = (color: string) => {
+  console.log(color);
+  emits('changeColor', openColorId, color);
+};
 </script>
 <style lang="less">
 @height: 35px;
 
 .tissue-list-wrapper {
+  position: relative;
   background: #242930;
   color: #c9d3e6;
   width: v-bind(cssWidth);

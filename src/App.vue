@@ -1,38 +1,70 @@
 <template>
-  <div class="title">button组件示例:</div>
-  <st-button>默认按钮</st-button>
-  <st-button type="primary">主要按钮</st-button>
-  <st-button type="warning">警告按钮</st-button>
-  <st-button type="danger">危险按钮</st-button>
-  <st-button type="success">成功按钮</st-button>
+  <div class="example-container">
+    <div class="title">button组件示例:</div>
+    <st-button>默认按钮</st-button>
+    <st-button type="primary">主要按钮</st-button>
+    <st-button type="warning">警告按钮</st-button>
+    <st-button type="danger">危险按钮</st-button>
+    <st-button type="success">成功按钮</st-button>
 
-  <div class="title">ImageButton组件示例:</div>
-  <image-button :imgPath="'#'" :title="'手动配准'"></image-button>
+    <div class="title">ImageButton组件示例:</div>
+    <image-button :imgPath="'#'" :title="'手动配准'"></image-button>
 
-  <div class="title">代码块组件示例:</div>
-  <demo-block>
-    <template #source>
-      <layout-switch :imgPath="'#'" :title="'2x2'" :layoutName="'2x2hip'" @changeLayout="changeLayout"></layout-switch>
-    </template>
-    使用type属性来定义 Button 的样式
-    <template #highlight>
-      <pre><layout-switch :imgPath="'#'" :title="'2x2'" :layoutName="'2x2hip'" @changeLayout="changeLayout"></layout-switch></pre>
-    </template>
-  </demo-block>
+    <div class="title">代码块组件示例:</div>
+    <demo-block>
+      <template #source>
+        <layout-switch
+          :imgPath="'#'"
+          :title="'2x2'"
+          :layoutName="'2x2hip'"
+          @changeLayout="changeLayout"
+        ></layout-switch>
+      </template>
+      使用type属性来定义 Button 的样式
+      <template #highlight>
+        <pre><layout-switch :imgPath="'#'" :title="'2x2'" :layoutName="'2x2hip'" @changeLayout="changeLayout"></layout-switch></pre>
+      </template>
+    </demo-block>
 
-  <div class="title">布局切换组件示例:</div>
-  <layout-switch :imgPath="'#'" :title="'2x2'" :layoutName="'2x2hip'" @changeLayout="changeLayout"></layout-switch>
-  <layout-switch :imgPath="'#'" :title="'1x3'" :layoutName="'1x3hip'" @changeLayout="changeLayout"></layout-switch>
+    <div class="title">布局切换组件示例:</div>
+    <layout-switch :imgPath="'#'" :title="'2x2'" :layoutName="'2x2hip'" @changeLayout="changeLayout"></layout-switch>
+    <layout-switch :imgPath="'#'" :title="'1x3'" :layoutName="'1x3hip'" @changeLayout="changeLayout"></layout-switch>
 
-  <div class="title">序列切换组件示例:</div>
-  <series-list :seriesList="series"></series-list>
+    <div class="title">序列切换组件示例:</div>
+    <series-list :seriesList="series"></series-list>
 
-  <div class="title">组织列表组件示例:</div>
-  <tissue-list :tissueList="tissues"></tissue-list>
+    <div class="title">组织列表组件示例:</div>
+    <tissue-list :tissueList="tissues"></tissue-list>
+
+    <div class="title">选择框组件示例</div>
+    <st-select
+      v-model:value="selectOption"
+      @change="handleChangeOperationSide($event)"
+      width="146px"
+      :allowClear="true"
+      :options="options"
+    ></st-select>
+
+    <div class="title">颜色选择器组件</div>
+    <color-picker
+      :colorOptions="colorOptions"
+      @changeSettingOpen="changeSettingOpen"
+      @changeColor="changeColor"
+    ></color-picker>
+
+    <div class="title">进度条组件</div>
+    <st-progress
+      :visible="progressVisible"
+      :progressContent="progressContent"
+      :progressPercent="progressPercent"
+    ></st-progress>
+  </div>
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue';
 import { TissueItem } from './packages/TissueList/interface';
+import { colorPickerConfig } from './config/colorpicker.config';
 const changeLayout = (layoutName: string) => {
   console.log(layoutName);
 };
@@ -137,10 +169,53 @@ const tissues: TissueItem[] = [
     selected: false,
   },
 ];
+
+const selectOption = ref('');
+
+const options = [
+  {
+    value: 'value1',
+    label: '选项1',
+  },
+  {
+    value: 'value2',
+    label: '选项2',
+  },
+];
+
+const handleChangeOperationSide = (option: string) => {
+  console.log(option);
+};
+
+const colorOptions = ref(colorPickerConfig.colorOptions);
+
+const changeSettingOpen = () => {
+  console.log('关闭');
+};
+
+const changeColor = (color: string) => {
+  console.log(color);
+};
+
+const progressVisible = ref(true);
+const progressContent = '加载中...';
+const progressPercent = ref(50);
+
+setInterval(() => {
+  if (progressPercent.value < 100) {
+    progressPercent.value += 10;
+  } else {
+    progressVisible.value = false;
+  }
+}, 1000);
 </script>
 
 <style lang="less">
-.title {
-  padding: 8px;
+.example-container {
+  width: 40%;
+  margin: 0 auto;
+  .title {
+    padding: 8px;
+  }
 }
 </style>

@@ -12,8 +12,10 @@
       ></a-input>
     </div>
     <div class="col-color">
-      <div @click.stop="openColor">
-        <el-color-picker :model-value="tissueColor" show-alpha />
+      <div @click.stop="openColorTable">
+        <!-- <el-color-picker :model-value="tissueColor" show-alpha /> -->
+        <div v-if="color === 'rgb(0,0,0)'" class="color-button transparent"></div>
+        <div v-else class="color-button" :style="{ backgroundColor: tissue.color }"></div>
       </div>
     </div>
     <div class="col-size">
@@ -31,14 +33,6 @@
         <img src="assets/images/delete.svg" alt="delelte" :style="{ width: '22px', transform: 'none' }" />
       </button>
     </div>
-    <!-- 颜色调节弹框 -->
-    <template v-if="isOpenColorSetting">
-      <color-setting
-        @changeSettingOpen="changeSettingOpen"
-        @changeColor="changeColor"
-        :style="{ marginTop: '-58px' }"
-      ></color-setting>
-    </template>
   </div>
 </template>
 
@@ -46,7 +40,6 @@
 import { ref, defineProps, nextTick, defineEmits } from 'vue';
 import { ElColorPicker } from 'element-plus';
 import { TissueItem } from './interface';
-import ColorSetting from './ColorSetting.vue';
 const props = defineProps<{
   tissue: TissueItem;
   selecCellType: string;
@@ -54,14 +47,13 @@ const props = defineProps<{
 }>();
 
 const emits = defineEmits<{
-  (e: 'changeColor', color: string): void;
+  (e: 'openColorTable', tissueId: number): void;
   (e: 'changeVisibility', visibility: string): void;
   (e: 'changeOpacity', opacity: number): void;
   (e: 'deleteTissue'): void;
 }>();
 
 const isEditingName = ref(false);
-const isOpenColorSetting = ref(false);
 const preName = ref('');
 const tissueName = ref(props.tissue.name);
 
@@ -83,17 +75,8 @@ const endEditName = () => {
 };
 
 // 颜色框修改颜色
-const openColor = () => {
-  isOpenColorSetting.value = true;
-};
-
-const changeSettingOpen = (param: boolean) => {
-  isOpenColorSetting.value = param;
-};
-
-const changeColor = (color: string) => {
-  console.log(color);
-  emits('changeColor', props.tissue.tissueId, color);
+const openColorTable = () => {
+  emits('openColorTable', props.tissue.tissueId);
 };
 
 const changeVisibility = () => {
@@ -127,6 +110,16 @@ const deleteTissue = () => {
     width: 40px;
     height: 100%;
     margin-top: 0;
+    .color-button {
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      vertical-align: -12px;
+      margin-left: 5px;
+      &.transparent {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+      }
+    }
     :deep {
       .el-color-picker {
         height: 35px;
