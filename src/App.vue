@@ -1,5 +1,5 @@
 <template>
-  <div class="example-container">
+  <div class="example-container" id="example-container">
     <div class="title">button组件示例:</div>
     <st-button>默认按钮</st-button>
     <st-button type="primary">主要按钮</st-button>
@@ -58,6 +58,15 @@
       :progressContent="progressContent"
       :progressPercent="progressPercent"
     ></st-progress>
+
+    <div class="title">截图按钮组件</div>
+    <screen-shot
+      :imgPath="'#'"
+      :title="'截屏'"
+      v-model:select="isSelected"
+      :targetDom="'body'"
+      :saveFileName="'截图'"
+    ></screen-shot>
   </div>
 </template>
 
@@ -208,6 +217,8 @@ setInterval(() => {
     progressVisible.value = false;
   }
 }, 1000);
+
+const isSelected = ref(false);
 </script>
 
 <style lang="less">
