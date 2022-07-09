@@ -1,30 +1,7 @@
 <template>
-  <div class="example-container">
-    <div class="title">button组件示例:</div>
-    <st-button>默认按钮</st-button>
-    <st-button type="primary">主要按钮</st-button>
-    <st-button type="warning">警告按钮</st-button>
-    <st-button type="danger">危险按钮</st-button>
-    <st-button type="success">成功按钮</st-button>
-
+  <div class="example-container" id="example-container">
     <div class="title">ImageButton组件示例:</div>
     <image-button :imgPath="'#'" :title="'手动配准'"></image-button>
-
-    <div class="title">代码块组件示例:</div>
-    <demo-block>
-      <template #source>
-        <layout-switch
-          :imgPath="'#'"
-          :title="'2x2'"
-          :layoutName="'2x2hip'"
-          @changeLayout="changeLayout"
-        ></layout-switch>
-      </template>
-      使用type属性来定义 Button 的样式
-      <template #highlight>
-        <pre><layout-switch :imgPath="'#'" :title="'2x2'" :layoutName="'2x2hip'" @changeLayout="changeLayout"></layout-switch></pre>
-      </template>
-    </demo-block>
 
     <div class="title">布局切换组件示例:</div>
     <layout-switch :imgPath="'#'" :title="'2x2'" :layoutName="'2x2hip'" @changeLayout="changeLayout"></layout-switch>
@@ -53,16 +30,36 @@
     ></color-picker>
 
     <div class="title">进度条组件</div>
+    <a-button type="primary" style="height: 40px; width: 160px" @click="showProgress">Open Progress</a-button>
     <st-progress
       :visible="progressVisible"
       :progressContent="progressContent"
       :progressPercent="progressPercent"
     ></st-progress>
+
+    <div class="title">截图按钮组件</div>
+    <screen-shot
+      :imgPath="'#'"
+      :title="'截屏'"
+      v-model:select="isSelected"
+      :targetDom="'body'"
+      :saveFileName="'截图'"
+    ></screen-shot>
+
+    <div class="title">弹窗提示组件</div>
+    <a-button type="primary" style="height: 40px; width: 160px" @click="showMessageTip">Open MessageTip</a-button>
+    <message-tip
+      v-model:isVisible="tipVisible"
+      :tipContent="tipContent"
+      :maskClosable="false"
+      @onOk="onOkClick"
+      @onCancel="onCancelClick"
+    ></message-tip>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { TissueItem } from './packages/TissueList/interface';
 import { colorPickerConfig } from './config/colorpicker.config';
 const changeLayout = (layoutName: string) => {
@@ -197,17 +194,41 @@ const changeColor = (color: string) => {
   console.log(color);
 };
 
-const progressVisible = ref(true);
-const progressContent = '加载中...';
+const progressVisible = ref(false);
+const progressContent = ref('');
 const progressPercent = ref(50);
 
-setInterval(() => {
-  if (progressPercent.value < 100) {
-    progressPercent.value += 10;
-  } else {
-    progressVisible.value = false;
-  }
-}, 1000);
+const showProgress = () => {
+  const func = () => {
+    if (progressPercent.value < 100) {
+      progressVisible.value = true;
+      progressPercent.value += 10;
+      progressContent.value = '加载中...';
+    } else {
+      progressVisible.value = false;
+    }
+    return func;
+  };
+  setInterval(func(), 1000);
+};
+
+const isSelected = ref(false);
+
+const tipVisible = ref(false);
+const tipContent = ref('');
+
+const showMessageTip = () => {
+  tipVisible.value = !tipVisible.value;
+  tipContent.value = '这是一条提示框信息！';
+};
+
+const onOkClick = () => {
+  console.log('ok');
+};
+
+const onCancelClick = () => {
+  console.log('cancel');
+};
 </script>
 
 <style lang="less">

@@ -206,10 +206,10 @@ const changeColor = (color: string) => {
       > div {
         flex: 1;
       }
-      :deep(.ant-slider-rail) {
+      .ant-slider-rail {
         border-radius: 6px !important;
       }
-      :deep(.ant-slider-track) {
+      .ant-slider-track {
         border-radius: 6px !important;
         background-color: transparent !important;
         background-image: linear-gradient(90deg, rgba(4, 133, 111, 0) 0%, #04856f 100%) !important;

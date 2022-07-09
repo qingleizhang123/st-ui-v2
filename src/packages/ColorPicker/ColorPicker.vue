@@ -1,17 +1,17 @@
 <template>
   <div class="st-colorpicker-box">
-    <div class="setting-top">
-      <span class="title">{{ settingTitle }}</span>
-      <CloseOutlined class="close-icon" @click.stop="closeSetting" />
+    <div class="st-setting-top">
+      <span class="st-title">{{ settingTitle }}</span>
+      <CloseOutlined class="st-close-icon" @click.stop="closeSetting" />
     </div>
-    <div class="setting-container">
-      <div class="setting-color">
-        <div class="color-picker">
+    <div class="st-setting-container">
+      <div class="st-setting-color">
+        <div class="st-color-picker">
           <a-row type="flex">
             <a-col flex="1 1 20%" v-for="color in props.colorOptions" :key="color">
-              <div class="color-box" :class="{ selected: color.isSelected }" @click.stop="changeColor(color.id)">
-                <div class="color-item" :style="{ background: color.color }">
-                  <div class="initial-color" v-if="color.color === 'rgba(0,0,0,0)'"></div>
+              <div class="st-color-box" :class="{ selected: color.isSelected }" @click.stop="changeColor(color.id)">
+                <div class="st-color-item" :style="{ background: color.color }">
+                  <div class="st-initial-color" v-if="color.color === 'rgba(0,0,0,0)'"></div>
                 </div>
               </div>
             </a-col>
@@ -74,7 +74,7 @@ const closeSetting = () => {
   box-shadow: 0px 6px 12px 0px rgb(0 0 0 / 50%);
   border-radius: 2px;
 
-  .setting-top {
+  .st-setting-top {
     height: 70px;
     background-image: linear-gradient(180deg, #2b313b 0%, rgba(24, 27, 33, 0) 100%);
     box-shadow: inset 0 1px 0 0 #424959;
@@ -82,12 +82,12 @@ const closeSetting = () => {
     text-align: center;
     .text-common(PingFangSC-Semibold, 18px, 600);
 
-    .title {
+    .st-title {
       position: relative;
       top: 24px;
     }
 
-    .close-icon {
+    .st-close-icon {
       position: absolute;
       top: 24px;
       right: 32px;
@@ -95,31 +95,31 @@ const closeSetting = () => {
     }
   }
 
-  .setting-container {
+  .st-setting-container {
     padding: 0px 60px 65px 60px;
 
-    .setting-color {
+    .st-setting-color {
       height: auto;
       display: flex;
       flex-direction: column;
 
-      .color-picker {
+      .st-color-picker {
         width: 215px;
         display: inline-block;
         vertical-align: top;
 
-        .color-box {
+        .st-color-box {
           width: 36px;
           height: 36px;
           border: 1px solid transparent;
           margin-bottom: 2px;
 
-          .color-item {
+          .st-color-item {
             height: 28px;
             width: 28px;
             margin: 3px;
             border-radius: 2px;
-            .initial-color {
+            .st-initial-color {
               width: 100%;
               height: 100%;
               background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
