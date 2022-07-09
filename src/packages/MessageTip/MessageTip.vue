@@ -6,7 +6,6 @@
     :maskClosable="props.maskClosable"
     :closable="props.closable"
     wrapClassName="message-tip"
-    @cancel="onCancelClick"
   >
     <div class="tip-content">
       <div>
@@ -52,14 +51,18 @@ const updateVisible = e => {
 
 const emits = defineEmits<{
   (e: 'update:isVisible', isVisible: boolean): void;
+  (e: 'onOk'): void;
+  (e: 'onCancel'): void;
 }>();
 
 const onCancelClick = () => {
   emits('update:isVisible', false);
+  emits('onCancel');
 };
 
 const onOkClick = () => {
-  emits('update:isVisible', true);
+  emits('update:isVisible', false);
+  emits('onOk');
 };
 </script>
 

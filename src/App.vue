@@ -48,7 +48,13 @@
 
     <div class="title">弹窗提示组件</div>
     <a-button type="primary" style="height: 40px; width: 160px" @click="showMessageTip">Open MessageTip</a-button>
-    <message-tip v-model:isVisible="tipVisible" :tipContent="tipContent"></message-tip>
+    <message-tip
+      v-model:isVisible="tipVisible"
+      :tipContent="tipContent"
+      :maskClosable="false"
+      @onOk="onOkClick"
+      @onCancel="onCancelClick"
+    ></message-tip>
   </div>
 </template>
 
@@ -174,10 +180,6 @@ const options = [
   },
 ];
 
-watch(selectOption, newVal => {
-  console.log(newVal, '222');
-});
-
 const handleChangeOperationSide = (option: string) => {
   console.log(option);
 };
@@ -220,9 +222,13 @@ const showMessageTip = () => {
   tipContent.value = '这是一条提示框信息！';
 };
 
-watch(tipVisible, newVal => {
-  console.log(newVal, '111');
-});
+const onOkClick = () => {
+  console.log('ok');
+};
+
+const onCancelClick = () => {
+  console.log('cancel');
+};
 </script>
 
 <style lang="less">
